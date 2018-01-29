@@ -1,0 +1,179 @@
+.application-container {
+  width: auto;
+  margin: 0 auto;
+  max-width: 960px;
+  min-height: 100%;
+  max-height: 100%;
+}
+
+h1 {
+  border-bottom: 1px solid gray;
+  margin-top: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.nav-home i {
+  font-size: 50px;
+  text-decoration: none;
+}
+
+.search-button {
+  margin-top: -15px;
+  margin-bottom: 5px;
+}
+
+.result-section {
+  margin-top: 15px;
+}
+
+a {
+  color: rgb(83, 109, 254);
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgba(83, 109, 254, 0.4);
+  text-decoration: underline;
+  transform: scale(0.9);
+  transition: all ease-in-out 0.3s;
+}
+
+li {
+  list-style: none;
+}
+
+li p {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.pagination-buttons {
+  text-align: center;
+}
+
+.layout-row,
+.layout-column {
+  display: flex;
+}
+
+.layout-row {
+  flex-direction: row;
+}
+
+.layout-column {
+  flex-direction: column;
+}
+
+.layout-column.layout-align-start-stretch {
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+.layout-row.layout-align-space-between-center {
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.layout-row.layout-align-space-between-center {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.query-result {
+  margin-top: 20px;
+}
+
+.thumbnail img {
+  height: 100px;
+  padding: 1em;
+  width: 100px;
+}
+
+.thumbnail {
+  height: 130px;
+}
+
+/* View: List of result */
+.list-result {
+  list-style: none;
+}
+
+.list-result li {
+  background-color: rgba(158, 158, 158, 0.5);
+  clear: both;
+  height: 115px;
+  padding-top: 15px;
+}
+
+.list-result li i {
+  float: left;
+}
+
+.thumb {
+  float: left;
+  height: 100px;
+  margin: -0.5em 1em 1.5em 0;
+  padding-bottom: 1em;
+  width: 100px;
+}
+
+.list-group-item i {
+  color: rgba(83, 109, 254, 0.4);
+}
+
+.issue-info {
+  height: 85px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: rgba(83, 109, 254, 0.7);
+}
+
+/* View: details */
+.details {
+  background-color: white;
+  display: block;
+  float: left;
+  height: 200px;
+  margin-bottom: 2em;
+  margin-right: 3em;
+  padding: 2em;
+  width: 200px;
+}
+
+.details-images {
+  background-color: white;
+  float: left;
+  overflow: hidden;
+  position: relative;
+}
+
+.repository-of-user {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sort-container {
+  margin-bottom: 10px;
+}
+
+.info-value-repo {
+  color: rgb(83, 109, 254);
+}
+
+.sort-block {
+  background-color: rgb(83, 109, 254);
+  color: rgb(83, 109, 254);
+}
+
+.md-input-container {
+  background-color: rgb(83, 109, 254);
+  color: rgb(83, 109, 254);
+}
+
+.owner-repo{
+  margin-top: 10%;
+}

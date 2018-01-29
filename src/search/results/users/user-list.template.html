@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-5 col-md-offset-1">
+        <md-input-container>
+          <label for="filter-author">Search users:</label>
+          <input id='filter-author' ng-model="letter"/>
+        </md-input-container>
+      </div>
+      <ul class="list-result">
+        <li class="list-group-item table-hover thumbnail result-search-item"
+            ng-repeat="user in vm.users | filterStartsWithLetterUsers:letter">
+
+          <a ui-sref='search.results.userDetails({query: vm.query, position: vm.getUserPosition(user.index), page: vm.page})'
+             class="thumb">
+            <img ng-src="{{user.avatar_url}}" alt="{{user.login}}"/>
+          </a>
+          <a ui-sref='search.results.userDetails({query: vm.query, position: vm.getUserPosition(user.index), page: vm.page})'
+             class="thumb">{{user.login}}</a>
+        </li>
+      </ul>
+
+      <!--Pagination-->
+      <div class="pagination-buttons col-md-12">
+        <md-button class="md-raised md-primary" ui-sref="search.results.users({query: vm.query, page: vm.page - 1})"
+                   ng-disabled="vm.page == 1">
+          Previous
+        </md-button>
+        <span>{{vm.page}} of {{vm.pageCount || 1}}</span>
+        <md-button class="md-raised md-primary" ui-sref="search.results.users({query: vm.query, page: vm.page + 1})"
+                   ng-disabled="vm.page == vm.pageCount">
+          Next
+        </md-button>
+
+      </div>
+    </div>
+  </div>
+</div>

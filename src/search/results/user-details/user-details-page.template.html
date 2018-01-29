@@ -1,0 +1,41 @@
+<div class="container-fluid">
+  <div class="row">
+    <!--Pagination-->
+    <div class="pagination-buttons col-md-8">
+      <md-button class="md-raised md-primary"
+                 ui-sref="search.results.users({query: vm.query, page: vm.page})"
+                 ng-disabled="vm.position >= vm.total">
+        Back to page
+      </md-button>
+
+      <md-button class="md-raised md-primary"
+                 ui-sref="search.results.userDetails({query: vm.query, position: vm.position - 1, page: vm.page})"
+                 ng-disabled="vm.position < 2">Prev
+      </md-button>
+      <md-button class="md-raised md-primary"
+                 ui-sref="search.results.userDetails({query: vm.query, position: vm.position + 1})"
+                 ng-disabled="vm.position >= vm.total">Next
+      </md-button>
+
+    </div>
+
+    <div class="col-md-12">
+      <div class="details-images">
+        <h1 class="list-group-item list-group-item-danger">
+          {{vm.user.login}}</h1>
+        <img ng-src="{{vm.user.avatar_url}}" class="details" alt="{{vm.user.login}}"/>
+      </div>
+      <div class="col-md-5">
+        <ul class="list-result">
+          <li class="list-group-item table-hover thumbnail result-search-item"
+              ng-repeat="repo in vm.user.repos">
+            <a ui-sref="repoOfUser({repoId: repo.id, query: vm.query, position: vm.position, page: vm.page})"
+               class="thumb repository-of-user">{{repo.name}}</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+

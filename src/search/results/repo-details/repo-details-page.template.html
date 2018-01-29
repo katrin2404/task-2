@@ -1,0 +1,63 @@
+<div class="container-fluid">
+  <div class="row">
+    <!--Pagination-->
+    <div class=" pagination-buttons col-md-12
+          ">
+      <md-button class="md-raised md-primary"
+                 ui-sref="search.results.repos({query: vm.query, page: vm.page})"
+                 ng-disabled="vm.position >= vm.total">
+        Back to page
+      </md-button>
+
+      <md-button class="md-raised md-primary"
+                 ui-sref="search.results.repoDetails({query: vm.query, position: vm.position - 1})"
+                 ng-disabled="vm.position < 2">Prev
+      </md-button>
+      <md-button class="md-raised md-primary"
+                 ui-sref="search.results.repoDetails({query: vm.query, position: vm.position + 1})"
+                 ng-disabled="vm.position >= vm.total">Next
+      </md-button>
+
+    </div>
+
+    <div class="col-md-12">
+
+      <h1 class="list-group-item list-group-item-danger">
+        <a href="{{vm.repo.html_url}}" target="_blank">{{vm.repo.name}}</a>
+      </h1>
+      <div class="details-images">
+
+        <a href="{{vm.repo.owner.html_url}}" target="_blank">
+          <img class="details" ng-src="{{vm.repo.owner.avatar_url}}" alt="{{vm.repo.owner.avatar_url}}"/></a>
+      </div>
+      <div class="owner-repo col-md-5">
+        <a href="{{vm.repo.owner.html_url}}" target="_blank" class="thumb">
+          <i class="material-icons md-fab text-primary md-20">account_circle</i>
+          {{vm.repo.owner.login}}
+        </a>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-md-12 layout-row result-section">
+        <div class="list-group col-md-12">
+          <a class="list-group-item list-group-item-action">
+            <i class="material-icons md-fab text-primary md-20">get_app</i>
+            Forks:
+            <span class="badge badge-primary badge-pill">{{vm.repo.forks_count}}</span>
+          </a>
+          <a class="list-group-item list-group-item-action">
+            <i class="material-icons md-fab text-primary md-20">bug_report</i>
+            Count of open issues:
+            <span class="badge badge-primary badge-pill">{{vm.repo.open_issues_count}}</span>
+          </a>
+          <a class="list-group-item list-group-item-action">
+            <i class="material-icons md-fab text-primary md-20">list</i>
+            Size of repository:
+            <span class="badge badge-primary badge-pill">{{vm.repo.size}}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+

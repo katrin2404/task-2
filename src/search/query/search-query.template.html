@@ -1,0 +1,20 @@
+<div class="layout-column container-fluid">
+  <div class="row">
+    <form name="vm.searchForm" class="col-xs-12" novalidate ng-submit="vm.showResults()">
+      <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+        <md-input-container class="col-xs-12">
+          <label>Query:</label>
+          <input
+            ng-model="vm.query"
+            class="form-control"
+            placeholder="Type your query..."
+            name="query"
+            required>
+        </md-input-container>
+      </section>
+      <section class="search-button" layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+        <md-button type='submit' class="md-raised md-primary" ng-disabled="vm.searchForm.$invalid">Find</md-button>
+      </section>
+    </form>
+  </div>
+</div>

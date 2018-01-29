@@ -1,0 +1,67 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row sort-container">
+        <div class="col-md-5 col-md-offset-1">
+          <md-input-container>
+            <label for="filter-repo">Search repositories:</label>
+            <input id='filter-repo' ng-model="letter"/>
+          </md-input-container>
+        </div>
+
+        <div class="col-md-offset-6">
+          <md-input-container>
+            <label class="text-info">Sort in the page by:</label>
+            <md-select class="list-group-item sort-block" id="sort-repos" ng-model="vm.orderProp">
+              <md-option value=""><em>None</em></md-option>
+              <md-option value="mame">Name of repository &#9650;</md-option>
+              <md-option value="-name">Name of repository &#9660;</md-option>
+              <md-option value="forks_count">Forks&#9650;</md-option>
+              <md-option value="-forks_count">Forks&#9660;</md-option>
+              <md-option value="open_issues_count">Open issues&#9650;</md-option>
+              <md-option value="-open_issues_count">Open issues&#9660;</md-option>
+              <md-option value="size">Size of repository &#9650;</md-option>
+              <md-option value="-size">Size of repository &#9660;</md-option>
+            </md-select>
+          </md-input-container>
+        </div>
+      </div>
+      <ul class="list-result">
+        <li class="list-group-item table-hover thumbnail result-search-item"
+            ng-repeat="repo in vm.repos | startsWithLetterRepo:letter | orderBy:vm.orderProp">
+
+          <a
+            ui-sref='search.results.repoDetails({query: vm.query, position: vm.getRepoPosition(repo.index), page: vm.page})'
+            class="thumb col-md-2">
+            <i class="material-icons md-20">assignment</i>
+            {{repo.name}}
+          </a>
+          <a href="{{repo.owner.html_url}}" target="_blank" class="thumb col-md-2">
+            <img ng-src="{{repo.owner.avatar_url}}" alt="{{repo.owner.login}}"/>
+          </a>
+          <a href="{{repo.owner.html_url}}" target="_blank" class="thumb">
+            <i class="material-icons text-success md-20">account_circle</i>
+            {{repo.owner.login}}
+          </a>
+          <p class="info-value-repo"> Forks:{{repo.forks_count}}</p>
+          <p class="info-value-repo"> Count of open issues:{{repo.open_issues_count}}</p>
+          <p class="info-value-repo"> Size of repository:{{repo.size}}</p>
+        </li>
+      </ul>
+
+      <!--Pagination-->
+      <div class="pagination-buttons col-md-12">
+        <md-button class="md-raised md-primary" ui-sref="search.results.repos({query: vm.query, page: vm.page - 1})"
+                   ng-disabled="vm.page == 1">
+          Previous
+        </md-button>
+        <span>{{vm.page}} of {{vm.pageCount || 1}}</span>
+        <md-button class="md-raised md-primary" ui-sref="search.results.repos({query: vm.query, page: vm.page + 1})"
+                   ng-disabled="vm.page == vm.pageCount">
+          Next
+        </md-button>
+
+      </div>
+    </div>
+  </div>
+</div>

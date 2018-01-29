@@ -1,0 +1,26 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="list-result">
+        <li class="list-group-item table-hover thumbnail result-search-item"
+            ng-repeat="code in vm.codes">
+          <i class="material-icons text-primary md-20">local_post_office</i>
+          <a href="{{code.html_url}}" target="_blank">{{code.name}}</a>
+        </li>
+      </ul>
+
+      <!--Pagination-->
+      <div class="pagination-buttons col-md-12">
+        <md-button class="md-raised md-primary" ui-sref="search.results.codes({query: vm.query, page: vm.page - 1})"
+                   ng-disabled="vm.page == 1">
+          Previous
+        </md-button>
+        <span>{{vm.page}} of {{vm.pageCount}}</span>
+        <md-button class="md-raised md-primary" ui-sref="search.results.codes({query: vm.query, page: vm.page + 1})"
+                   ng-disabled="vm.page == vm.pageCount">
+          Next
+        </md-button>
+      </div>
+    </div>
+  </div>
+</div>

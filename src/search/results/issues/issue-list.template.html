@@ -1,0 +1,37 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="list-result">
+        <li class="list-group-item table-hover thumbnail result-search-item"
+            ng-repeat="issue in vm.issues">
+          <a href="#" class="thumb col-md-2">
+            <img ng-src="{{issue.user.avatar_url}}" alt="{{issue.user.login}}">
+          </a>
+          <a href="{{issue.user.html_url}}" target="_blank" class="thumb">
+            <i class="material-icons text-success md-20">account_circle</i>
+            {{issue.user.login}}
+          </a>
+          <a href="{{issue.html_url}}" target="_blank" class="thumb col-md-3 issue-info">
+            <i class="material-icons md-20">assignment</i>
+            {{issue.title}}
+          </a>
+          <p class="issue-info col-md-offset-6">{{issue.body}}</p>
+        </li>
+      </ul>
+
+      <!--Pagination-->
+      <div class="pagination-buttons col-md-12">
+        <md-button class="md-raised md-primary" ui-sref="search.results.issues({query: vm.query, page: vm.page - 1})"
+                   ng-disabled="vm.page == 1">
+          Previous
+        </md-button>
+        <span>{{vm.page}} of {{vm.pageCount || 1}}</span>
+        <md-button class="md-raised md-primary" ui-sref="search.results.issues({query: vm.query, page: vm.page + 1})"
+                   ng-disabled="vm.page == vm.pageCount">
+          Next
+        </md-button>
+
+      </div>
+    </div>
+  </div>
+</div>
