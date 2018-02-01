@@ -8,14 +8,14 @@
           name: 'search',
           url: '/',
           template: '<search-query></search-query><ui-view></ui-view>',
-          data: {pageTitle: 'Home'},
+          data: {pageTitle: 'Home'}
         })
         .state({
           name: 'search.results',
           abstract: true,
           url: 'search',
           template: '<search-results-page></search-results-page>',
-          data: {pageTitle: 'Search'},
+          data: {pageTitle: 'Search'}
         })
         .state({
           name: 'search.results.users',
@@ -23,14 +23,14 @@
           template: '<user-list></user-list>',
           params: {
             query: {
-              squash: true,
+              squash: true
             },
             page: {
               squash: true,
-              value: '1',
-            },
+              value: '1'
+            }
           },
-          data: {pageTitle: 'Users'},
+          data: {pageTitle: 'Users'}
         })
         .state({
           name: 'search.results.userDetails',
@@ -38,16 +38,16 @@
           template: '<user-details-page></user-details-page>',
           params: {
             query: {
-              squash: true,
+              squash: true
             },
             position: {
-              squash: true,
+              squash: true
             },
             page: {
-              squash: true,
+              squash: true
             }
           },
-          data: {pageTitle: 'Details of user'},
+          data: {pageTitle: 'Details of user'}
         })
         .state({
           name: 'repoOfUser',
@@ -55,34 +55,34 @@
           template: '<repo-of-user></repo-of-user>',
           params: {
             repoId: {
-              squash: true,
+              squash: true
             },
             query: {
-              squash: true,
+              squash: true
             },
             position: {
-              squash: true,
+              squash: true
             },
             page: {
-              squash: true,
+              squash: true
             }
           },
-          data: {pageTitle: 'Repository'},
+          data: {pageTitle: 'Repository'}
         })
         .state({
           name: 'search.results.repos',
-          url: '/repositories/{query}/{page}',
+          url: '/{query}/repositories/{page}',
           template: '<repo-list></repo-list>',
           params: {
             query: {
-              squash: true,
+              squash: true
             },
             page: {
               squash: true,
-              value: '1',
-            },
+              value: '1'
+            }
           },
-          data: {pageTitle: 'Repositories'},
+          data: {pageTitle: 'Repositories'}
         })
         .state({
           name: 'search.results.repoDetails',
@@ -90,52 +90,52 @@
           template: '<repo-details-page></repo-details-page>',
           params: {
             query: {
-              squash: true,
+              squash: true
             },
             position: {
-              squash: true,
+              squash: true
             },
             page: {
-              squash: true,
+              squash: true
             }
           },
-          data: {pageTitle: 'Details of repository'},
+          data: {pageTitle: 'Details of repository'}
         })
         .state({
           name: 'search.results.issues',
-          url: '/issues/{query}/{page}',
+          url: '/{query}/issues/{page}',
           template: '<issue-list></issue-list>',
           params: {
             query: {
-              squash: true,
+              squash: true
             },
             page: {
               squash: true,
-              value: '1',
-            },
+              value: '1'
+            }
           },
-          data: {pageTitle: 'Issues'},
+          data: {pageTitle: 'Issues'}
         })
         .state({
           name: 'search.results.codes',
-          url: '/code/{query}/{page}',
+          url: '/{query}/code/{page}',
           template: '<code-list></code-list>',
           params: {
             query: {
-              squash: true,
+              squash: true
             },
             page: {
               squash: true,
-              value: '1',
-            },
+              value: '1'
+            }
           },
-          data: {pageTitle: 'Codes'},
+          data: {pageTitle: 'Codes'}
         })
         .state({
-          name: 'NotFound',
-          url: '/NotFound',
+          name: 'search.NotFound',
+          url: 'NotFound',
           template: '<h1>Not Found</h1>',
-          data: {pageTitle: 'Not Found'},
+          data: {pageTitle: 'Not Found'}
         });
       $urlRouterProvider.otherwise("/NotFound");
     }

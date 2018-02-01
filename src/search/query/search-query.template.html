@@ -13,7 +13,10 @@
         </md-input-container>
       </section>
       <section class="search-button" layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-        <md-button type='submit' class="md-raised md-primary" ng-disabled="vm.searchForm.$invalid">Find</md-button>
+        <md-button type='submit' class="md-raised md-primary"
+                   ng-disabled="vm.searchForm.$invalid || vm.searchForm.$pristine">
+          Find
+        </md-button>
       </section>
     </form>
   </div>
