@@ -14,11 +14,14 @@
     vm.init = init;
 
     vm.getUserPosition = getUserPosition;
+    vm.prevPage = prevPage;
+    vm.nextPage = nextPage;
 
 
     init();
 
     function init() {
+      vm.loading = true;
       return UsersService.search(vm.query, vm.page)
         .then(() => {
           vm.usersTotalCount = UsersService.total;
@@ -27,13 +30,20 @@
           if (vm.pageCount > vm.limitPages) {
             vm.pageCount = vm.limitPages;
           }
+          vm.loading = false;
         });
     }
 
     function getUserPosition(index) {
       return (vm.page - 1) * vm.pageSize + index + 1;
     }
+    function prevPage() {
+      return $state.go('search.results.users', {query: vm.query, page: vm.page - 1});
+    }
 
+    function nextPage() {
+      return $state.go('search.results.users', {query: vm.query, page: vm.page + 1});
+    }
 
   })
 })();

@@ -3,7 +3,7 @@
   'use strict';
 
 
-  angular.module('search').factory('UsersService', function ($q, ReposRepository, UsersRepository) {
+  angular.module('search').factory('UsersService', function ($q, SearchRepository) {
     const state = {
       users: [],
       total: 0,
@@ -25,7 +25,7 @@
     function search(query, page = 1) {
       state.query = query;
       state.page = Number(page);
-      return UsersRepository.search(query, page)
+      return SearchRepository.search('users', query, page)
         .then(response => {
           state.users = response.items.map((item, index) => ({...item, index}));
           state.total = response.total_count;
@@ -38,8 +38,8 @@
         .then(() => {
           const user = state.users[position];
           return $q.all({
-            user: UsersRepository.loadDetails(user.login),
-            repos: ReposRepository.loadByUser(user.login),
+            user: SearchRepository.loadDetails('user', user.login),
+            repos: SearchRepository.loadReposByUser(user.login),
           });
         })
         .then(({user, repos}) => ({...user, repos}));

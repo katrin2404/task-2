@@ -3,24 +3,24 @@
     "title": "Users: ",
     "totalCount": "usersTotalCount",
     "icon": "account_circle",
-    "path": "search.results.users({query: vm.query})"
+    "route": "users"
   },
   {
     "title": "Repositories: ",
     "totalCount": "reposTotalCount",
     "icon": "description",
-    "path": "search.results.repos({query: vm.query})"
+    "route": "repos"
   },
   {
     "title": "Issues: ",
     "totalCount": "issuesTotalCount",
     "icon": "bug_report",
-    "path": "search.results.issues({query: vm.query})"
+    "route": "issues"
   },
   {
     "title": "Codes: ",
     "totalCount": "codesTotalCount",
     "icon": "code",
-    "path": "search.results.codes({query: vm.query})"
+    "route": "codes"
   }
 ]

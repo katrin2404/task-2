@@ -10,8 +10,10 @@
     vm.codesTotalCount = 0;
 
     $http.get('resultOfQuery.json').then(function (response) {
-      console.log(response);
-      vm.results = response.data;
+      vm.results = response.data.map(item => ({
+        ...item,
+        path: `search.results.${item.route}({query: vm.query})`,
+      }));
     });
 
     const cancel = $transitions.onStart({}, handleTransition);
