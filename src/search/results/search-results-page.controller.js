@@ -1,13 +1,18 @@
 (function () {
 
   'use strict';
-  angular.module('search').controller('SearchResultsPageController', function ($q, $scope, $state, $stateParams, $transitions, CodesService, IssuesService, ReposService, UsersService) {
+  angular.module('search').controller('SearchResultsPageController', function ($http, $q, $scope, $state, $stateParams, $transitions, CodesService, IssuesService, ReposService, UsersService) {
     const vm = this;
 
     vm.reposTotalCount = 0;
     vm.usersTotalCount = 0;
     vm.issuesTotalCount = 0;
     vm.codesTotalCount = 0;
+
+    $http.get('resultOfQuery.json').then(function (response) {
+      console.log(response);
+      vm.results = response.data;
+    });
 
     const cancel = $transitions.onStart({}, handleTransition);
     $scope.$on('$destroy', () => {

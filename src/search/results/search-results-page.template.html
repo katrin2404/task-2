@@ -8,24 +8,12 @@
     <div class="layout-row result-section">
 
       <div class="flex-30 list-group">
-        <a ui-sref='search.results.users({query: vm.query})' ui-sref-active="active" class="list-group-item list-group-item-action">
-          <i class="material-icons md-fab text-primary md-20">account_circle</i>
-          Users:
-          <span class="badge badge-primary badge-pill">{{vm.usersTotalCount}}</span>
+        <a ng-repeat="result in vm.results" ui-sref={{result.path}} ui-sref-active="active"
+           class="list-group-item list-group-item-action">
+          <i class="material-icons md-fab text-primary md-20">{{result.icon}}</i>
+          {{result.title}}
+          <span class="badge badge-primary badge-pill">{{vm[result.totalCount]}}</span>
         </a>
-        <a ui-sref='search.results.repos({query: vm.query})' ui-sref-active="active" class="list-group-item list-group-item-action">
-          <i class="material-icons md-fab text-primary md-20">description</i>
-          Repositories:
-          <span class="badge badge-primary badge-pill">{{vm.reposTotalCount}}</span>
-        </a>
-        <a ui-sref='search.results.issues({query: vm.query})' ui-sref-active="active" class="list-group-item list-group-item-action">
-          <i class="material-icons md-fab text-primary md-20">bug_report</i>
-          Issues:
-          <span class="badge badge-primary badge-pill">{{vm.issuesTotalCount}}</span> </a>
-        <a ui-sref='search.results.codes({query: vm.query})' ui-sref-active="active" class="list-group-item list-group-item-action">
-          <i class="material-icons md-fab text-primary md-20">code</i>
-          Code:
-          <span class="badge badge-primary badge-pill">{{vm.codesTotalCount}}</span></a>
       </div>
 
       <ui-view class="flex-70"></ui-view>

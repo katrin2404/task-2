@@ -2,6 +2,7 @@ const gulp = require('gulp');
 const inject = require('gulp-inject');
 const concat = require('gulp-concat');
 const favicons = require("gulp-real-favicon");
+const jsonFormat = require('gulp-json-format');
 const templateCache = require('gulp-angular-templatecache');
 const concatCss = require('gulp-concat-css');
 const webserver = require('gulp-webserver');
@@ -17,11 +18,15 @@ const conf = {
   ],
   js: [
     './src/**/search.module.js',
+    './src/**/pagination.module.js',
     './src/**/user-detail.module.js',
     './src/**/post-detail.module.js',
     './src/**/result-of-query.module.js',
     './src/app.module.js',
     './src/**/*.js',
+  ],
+  json: [
+    './src/search/results/resultOfQuery.json'
   ],
   jsExternal: [
     './node_modules/angular/angular.js',
@@ -73,6 +78,16 @@ gulp.task('js', () => {
   return gulp
     .src(conf.js)
     .pipe(concat('bundle.js'))
+    .pipe(gulp.dest(conf.dist));
+});
+
+/**
+ * Concat and copy all json source files
+ */
+gulp.task('json', () => {
+  return gulp
+    .src(conf.json)
+    .pipe(jsonFormat(4))
     .pipe(gulp.dest(conf.dist));
 });
 
@@ -129,7 +144,7 @@ gulp.task('inject', ['html'], () => {
 /**
  * Build app
  */
-gulp.task('build', gulpSequence('clean', ['favIcon', 'js', 'external-js', 'templates', 'css', 'external-css'], 'inject'));
+gulp.task('build', gulpSequence('clean', ['favIcon', 'js', 'json', 'external-js', 'templates', 'css', 'external-css'], 'inject'));
 
 gulp.task('server', ['build'], () => {
   return gulp.src(conf.dist)

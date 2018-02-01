@@ -11,12 +11,14 @@
         <li class="list-group-item table-hover thumbnail result-search-item"
             ng-repeat="user in vm.users | filterStartsWithLetterUsers:letter">
 
-          <a ui-sref='search.results.userDetails({query: vm.query, position: vm.getUserPosition(user.index), page: vm.page})'
-             class="thumb">
+          <a
+            ui-sref='search.results.userDetails({query: vm.query, position: vm.getUserPosition(user.index), page: vm.page})'
+            class="thumb">
             <img ng-src="{{user.avatar_url}}" alt="{{user.login}}"/>
           </a>
-          <a ui-sref='search.results.userDetails({query: vm.query, position: vm.getUserPosition(user.index), page: vm.page})'
-             class="thumb">{{user.login}}</a>
+          <a
+            ui-sref='search.results.userDetails({query: vm.query, position: vm.getUserPosition(user.index), page: vm.page})'
+            class="thumb">{{user.login}}</a>
         </li>
       </ul>
 
@@ -33,6 +35,9 @@
         </md-button>
 
       </div>
+
+      <ui-view class="flex-70"></ui-view>
+
     </div>
   </div>
 </div>

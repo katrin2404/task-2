@@ -12,6 +12,7 @@
       'uiRouterTitle',
 
       'search',
+      'pagination'
     ])
     .run(function ($trace) {
       $trace.enable('TRANSITION');

@@ -1,0 +1,13 @@
+<!--Pagination-->
+<div class="pagination-buttons col-md-12">
+  <md-button class="md-raised md-primary" ng-click="vm.changePage('search.results.users', -1)"
+             ng-disabled="vm.page == 1">
+    Previous
+  </md-button>
+  <span>{{vm.page}} of {{vm.pageCount || 1}}</span>
+  <md-button class="md-raised md-primary" ng-click="vm.changePage('search.results.users', 1)"
+             ng-disabled="vm.page == vm.pageCount">
+    Next
+  </md-button>
+
+</div>
