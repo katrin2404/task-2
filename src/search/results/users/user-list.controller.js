@@ -11,8 +11,8 @@
     vm.usersTotalCount = 0;
     vm.pageCount = 1;
     vm.limitPages = Pagination.limitPage;
-    vm.init = init;
 
+    vm.init = init;
     vm.getUserPosition = getUserPosition;
     vm.prevPage = prevPage;
     vm.nextPage = nextPage;
@@ -37,6 +37,7 @@
     function getUserPosition(index) {
       return (vm.page - 1) * vm.pageSize + index + 1;
     }
+
     function prevPage() {
       return $state.go('search.results.users', {query: vm.query, page: vm.page - 1});
     }

@@ -1,7 +1,7 @@
 (function () {
 
   'use strict';
-  angular.module('search').controller('RepoListController', function ($stateParams, Pagination, ReposService) {
+  angular.module('search').controller('RepoListController', function ($state, $stateParams, Pagination, ReposService) {
     const vm = this;
     vm.query = $stateParams.query;
     vm.page = Number($stateParams.page);
@@ -14,11 +14,14 @@
 
     vm.init = init;
     vm.getRepoPosition = getRepoPosition;
+    vm.prevPage = prevPage;
+    vm.nextPage = nextPage;
 
 
     init();
 
     function init() {
+      vm.loading = true;
       return ReposService.search(vm.query, vm.page)
         .then(() => {
           vm.reposTotalCount = ReposService.total;
@@ -27,11 +30,20 @@
           if (vm.pageCount > vm.limitPages) {
             vm.pageCount = vm.limitPages;
           }
+          vm.loading = false;
         });
     }
 
     function getRepoPosition(index) {
       return (vm.page - 1) * vm.pageSize + index + 1;
+    }
+
+    function prevPage() {
+      return $state.go('search.results.repos', {query: vm.query, page: vm.page - 1});
+    }
+
+    function nextPage() {
+      return $state.go('search.results.repos', {query: vm.query, page: vm.page + 1});
     }
 
   })

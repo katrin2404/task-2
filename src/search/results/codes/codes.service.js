@@ -2,11 +2,10 @@
 
   'use strict';
 
-  angular.module('search').factory('CodesService', function ($q, CodesRepository) {
+  angular.module('search').factory('CodesService', function ($q, SearchRepository) {
     const state = {
       codes: [],
       total: 0,
-      searchPromise: null,
       query: null,
       page: null,
     };
@@ -24,7 +23,7 @@
     function search(query, page = 1) {
       state.query = query;
       state.page = Number(page);
-      return CodesRepository.search(query, page)
+      return SearchRepository.search('codes', query, page)
         .then(response => {
           state.codes = response.items;
           state.total = response.total_count;

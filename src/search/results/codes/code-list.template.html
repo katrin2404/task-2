@@ -10,17 +10,17 @@
       </ul>
 
       <!--Pagination-->
-      <div class="pagination-buttons col-md-12">
-        <md-button class="md-raised md-primary" ui-sref="search.results.codes({query: vm.query, page: vm.page - 1})"
-                   ng-disabled="vm.page == 1">
-          Previous
-        </md-button>
-        <span>{{vm.page}} of {{vm.pageCount}}</span>
-        <md-button class="md-raised md-primary" ui-sref="search.results.codes({query: vm.query, page: vm.page + 1})"
-                   ng-disabled="vm.page == vm.pageCount">
-          Next
-        </md-button>
-      </div>
+      <pagination
+        page="vm.page"
+        page-count="vm.pageCount"
+        prev-page="vm.prevPage()"
+        next-page="vm.nextPage()"
+        loading="vm.loading"
+      ></pagination>
+
+      <ui-view class="flex-70"></ui-view>
+
     </div>
   </div>
 </div>
+

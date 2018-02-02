@@ -50,18 +50,17 @@
       </ul>
 
       <!--Pagination-->
-      <div class="pagination-buttons col-md-12">
-        <md-button class="md-raised md-primary" ui-sref="search.results.repos({query: vm.query, page: vm.page - 1})"
-                   ng-disabled="vm.page == 1">
-          Previous
-        </md-button>
-        <span>{{vm.page}} of {{vm.pageCount || 1}}</span>
-        <md-button class="md-raised md-primary" ui-sref="search.results.repos({query: vm.query, page: vm.page + 1})"
-                   ng-disabled="vm.page == vm.pageCount">
-          Next
-        </md-button>
+      <pagination
+        page="vm.page"
+        page-count="vm.pageCount"
+        prev-page="vm.prevPage()"
+        next-page="vm.nextPage()"
+        loading="vm.loading"
+      ></pagination>
 
-      </div>
+      <ui-view class="flex-70"></ui-view>
+
     </div>
   </div>
+</div>
 </div>

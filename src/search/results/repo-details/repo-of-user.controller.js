@@ -1,7 +1,7 @@
 (function () {
 
   'use strict';
-  angular.module('search').controller('RepoOfUserController', function ($scope, $stateParams, ReposRepository) {
+  angular.module('search').controller('RepoOfUserController', function ($scope, $stateParams, SearchRepository) {
     const vm = this;
     vm.position = Number($stateParams.position);
     vm.query = $stateParams.query;
@@ -12,8 +12,8 @@
 
     function init() {
       const repoId = $stateParams.repoId;
-      return ReposRepository
-        .loadDetails(repoId)
+      return SearchRepository
+        .loadDetails('repos', repoId)
         .then((repo) => {
           vm.repo = repo;
         });

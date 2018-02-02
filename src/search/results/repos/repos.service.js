@@ -2,7 +2,7 @@
 
   'use strict';
 
-  angular.module('search').factory('ReposService', function ($q, ReposRepository) {
+  angular.module('search').factory('ReposService', function ($q, SearchRepository) {
     const state = {
       repos: [],
       total: 0,
@@ -24,7 +24,7 @@
     function search(query, page = 1) {
       state.query = query;
       state.page = Number(page);
-      return ReposRepository.search(query, page)
+      return SearchRepository.search('repos', query, page)
         .then(response => {
           state.repos = response.items.map((item, index) => ({...item, index}));
           state.total = response.total_count;
@@ -37,7 +37,7 @@
         .then(() => {
           const repo = state.repos[position];
           return $q.all({
-            repo: ReposRepository.loadDetails(repo.id),
+            repo: SearchRepository.loadDetails('repos', repo.id),
           });
         })
         .then(({repo}) => ({...repo}));

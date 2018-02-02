@@ -38,7 +38,7 @@
         .then(() => {
           const user = state.users[position];
           return $q.all({
-            user: SearchRepository.loadDetails('user', user.login),
+            user: SearchRepository.loadDetails('users', user.login),
             repos: SearchRepository.loadReposByUser(user.login),
           });
         })
