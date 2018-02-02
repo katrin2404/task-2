@@ -3,5 +3,5 @@
   'use strict';
 
 // Define the `search` module
-  angular.module('search', ['ui.router']);
+  angular.module('search', ['ui.router', 'pagination']);
 })();

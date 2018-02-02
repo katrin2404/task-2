@@ -2,26 +2,7 @@
 
   'use strict';
 
-  angular.module('search').factory('SearchRepository', function ($http, ApiUrls, Pagination) {
-    const config = {
-      users: {
-        route: 'users',
-        query: q => `${q} in:login`,
-      },
-      repos: {
-        route: 'repositories',
-        query: q => `${q} in:name`,
-      },
-      issues: {
-        route: 'issues',
-        query: q => q,
-      },
-      codes: {
-        route: 'code',
-        query: q => `${q} repo:jquery/jquery`,
-      },
-    };
-
+  angular.module('search').factory('SearchRepository', function ($http, ApiUrls, Config, Pagination) {
     return {
       search,
       loadReposByUser,
@@ -30,10 +11,10 @@
 
     function search(entity, query, page = 1) {
       return $http
-        .get(`${ApiUrls.baseUrl}/search/${config[entity].route}`, {
+        .get(`${ApiUrls.baseUrl}/search/${Config[entity].route}`, {
           params: {
             page,
-            q: config[entity].query(query),
+            q: Config[entity].query(query),
             per_page: Pagination.pageSize,
           },
         })
@@ -46,9 +27,9 @@
         .then(response => response.data);
     }
 
-    function loadDetails(entity, entityId) {
+    function loadDetails(entity, entityKey) {
       return $http
-        .get(`${ApiUrls.baseUrl}/${config[entity].route}/${entityId}`)
+        .get(`${ApiUrls.baseUrl}/${Config[entity].route}/${entityKey}`)
         .then(response => response.data);
     }
 

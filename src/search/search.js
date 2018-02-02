@@ -135,6 +135,11 @@
           name: 'search.NotFound',
           url: 'NotFound',
           template: '<h1>Not Found</h1>',
+          params: {
+            query: {
+              squash: true
+            }
+          },
           data: {pageTitle: 'Not Found'}
         });
       $urlRouterProvider.otherwise("/NotFound");
